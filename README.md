@@ -13,3 +13,4 @@ Uma api para você que gosta de basquete e quer uma base de dados de fácil aces
 - **Definição dos controllers**
 - **Definação das services**
 - **Definição do repositories functions**
+- **Definição dos models**

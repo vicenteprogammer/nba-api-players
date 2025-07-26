@@ -1,0 +1,33 @@
+{
+  "name": "nba-api-players",
+  "version": "1.0.0",
+  "description": "Uma api para amantes do basquete.",
+  "main": "server.ts",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start:dev": "tsx --env-file=.env src/server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vicenteprogammer/nba-api-players.git"
+  },
+  "keywords": [
+    "API",
+    "BASKETBALL",
+    "PLAYERS",
+    "TEAMS"
+  ],
+  "author": "Vicente Junior",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vicenteprogammer/nba-api-players/issues"
+  },
+  "homepage": "https://github.com/vicenteprogammer/nba-api-players#readme",
+  "dependencies": {
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
+}
