@@ -14,3 +14,41 @@ Uma api para você que gosta de basquete e quer uma base de dados de fácil aces
 - **Definação das services**
 - **Definição do repositories functions**
 - **Definição dos models**
+
+
+#### Definição dos scripts
+
+```ts
+"scripts": {
+    "start:dev": "tsx --env-file=.env src/server.ts",
+    "start:watch": "tsx watch --env-file=.env src/server.ts",
+    "dist": "tsup src",
+    "start:dist": "npm run dist && node dist/src/server.js" 
+  },
+```
+
+#### Criando o arquivo server e o app
+```ts
+import express, { json } from "express";
+
+function createApp(){
+    const app = express();
+
+    app.use(json());
+    
+    return app;
+
+}
+
+export default createApp;
+```
+
+```ts
+import createApp from "./app";
+
+const server = createApp()
+
+server.listen(process.env.PORT,()=>{
+    console.log('Server is Activated')
+})
+```

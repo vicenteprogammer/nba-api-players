@@ -10,7 +10,7 @@
     "start:dev": "tsx --env-file=.env src/server.ts",
     "start:watch": "tsx watch --env-file=.env src/server.ts",
     "dist": "tsup src",
-    "start:dist": "npm run dist && node dist/src/server.js" 
+    "start:dist": "npm run dist && node dist/src/server.js"
   },
   "repository": {
     "type": "git",
@@ -28,9 +28,13 @@
     "url": "https://github.com/vicenteprogammer/nba-api-players/issues"
   },
   "homepage": "https://github.com/vicenteprogammer/nba-api-players#readme",
-  "dependencies": {
+  "devDependencies": {
+    "@types/express": "^5.0.3",
     "tsup": "^8.5.0",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
   }
 }
