@@ -52,3 +52,30 @@ server.listen(process.env.PORT,()=>{
     console.log('Server is Activated')
 })
 ```
+
+#### Implementação do services, routes e controller
+
+```ts
+import { Router } from "express";
+import { getPlayer } from "../controllers/player-controllers";
+
+const playRoutes= Router();
+
+playRoutes.get('/players', getPlayer)
+
+export default playRoutes;
+```
+
+```ts
+import { Request, Response } from "express"
+
+export const getPlayer = (req: Request, res: Response)=>{
+    res.status(200).json({player:'lebron'});
+}
+```
+
+```ts
+export const getPlayerService = async ()=>{
+    return {player: 'Michael Jordan'}
+}
+```
