@@ -1,3 +1,15 @@
+import * as PlayerRepository from "../repositories/players-repository";
+import { noContent, ok } from "../utils/http-help";
+
 export const getPlayerService = async ()=>{
-    return {player: 'Michael Jordan'}
+ const data = await PlayerRepository.findPlayerById(2)
+ let response = null;
+
+ if(data){
+    response = await ok(data)
+ }else{
+    response = await noContent()
+ }
+
+ return response
 }
