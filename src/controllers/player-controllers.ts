@@ -1,5 +1,6 @@
 import { Request, Response } from "express"
-import { getAllPlayerService, getFindPlayerById } from "../services/players-service";
+import { createPlayer, getAllPlayerService, getFindPlayerById } from "../services/players-service";
+import { badRequest } from "../utils/http-help";
 
 export const getPlayer = async (req: Request, res: Response)=>{
     const httpResponse = await getAllPlayerService()
@@ -12,3 +13,17 @@ export const getPlayerById =  async(req: Request, res: Response)=>{
     const httpResponse = await getFindPlayerById(id)
     res.status(httpResponse.statusCode).json(httpResponse.body)
 }
+
+export const playerCreate= async (req: Request, res: Response ) =>{
+    const player = req.body;
+    if(player){
+        let httpResponse = await createPlayer(player)
+        res.status(httpResponse.statusCode).json(httpResponse.body)
+    }else{
+      const response =   await badRequest()
+      res.status(response.statusCode).json(response.body)
+    }
+    
+    
+} 
+
