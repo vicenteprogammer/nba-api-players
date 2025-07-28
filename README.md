@@ -102,3 +102,31 @@ export const findPlayerById = async (id: number): Promise<PlayerModel | undefine
     return database.find((p)=> p.id === id)
 }
 ```
+
+#### Implementação do database
+```ts
+export const nbaPlayers: PlayerModel[] = [
+  {
+    id: 1,
+    name: "LeBron James",
+    age: 39,
+    team: "Los Angeles Lakers",
+    position: "SF/PF",
+    height: "6'9\"",
+    weight: "250 lbs",
+    overall: 96,
+    attributes: {
+      shooting: 88,
+      passing: 92,
+      defense: 86,
+      speed: 84,
+      dunk: 90,
+      threept: 83,
+      midRange: 85,
+      strength: 92
+    },
+    specialty: "Playmaker",
+    nationality: "USA"
+  }
+} 
+```

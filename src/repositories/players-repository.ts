@@ -1,14 +1,10 @@
 import { PlayerModel } from "../models/players-model";
-const database: PlayerModel[] =[
-    {id: 1, name:"Michael Jordan"},
-    {id:2, name: "Lebron James"}
-] 
-
+import { nbaPlayers } from "../database/nba-players-data";
 
 export const findAllPlayers = async ():Promise<PlayerModel[]> =>{
-    return database;
+    return nbaPlayers;
 }
 
 export const findPlayerById = async (id: number): Promise<PlayerModel | undefined> =>{
-    return database.find((p)=> p.id === id)
+    return nbaPlayers.find((p)=> p.id === id)
 }
