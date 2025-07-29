@@ -12,3 +12,14 @@ export const findPlayerById = async (id: number): Promise<PlayerModel | undefine
 export const insertPlayer = async(player: PlayerModel)=>{
     nbaPlayers.push(player)
 }
+
+
+export const deletePlayer = async(id: number) =>{
+    const index = nbaPlayers.findIndex((p)=> p.id === id)
+
+    if(index !== -1){
+        nbaPlayers.splice(index, 1)
+    }
+    
+    return index
+}

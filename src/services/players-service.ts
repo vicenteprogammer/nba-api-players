@@ -1,6 +1,6 @@
 import { PlayerModel } from "../models/players-model";
 import * as PlayerRepository from "../repositories/players-repository";
-import { badRequest, created, noContent, ok } from "../utils/http-help";
+import { badRequest, created, noContent, notFound, ok } from "../utils/http-help";
 
 export const getAllPlayerService = async ()=>{
  const data = await PlayerRepository.findAllPlayers()
@@ -42,3 +42,15 @@ export const createPlayer= async (player:PlayerModel)=>{
    return response
 }
 
+
+export const deletePlayerService = async (id:number)=>{
+   let response = null
+   const data = await PlayerRepository.deletePlayer(id)
+   if(data != -1){
+      response = await ok({message:'Deleted'})
+   }else{
+      response = await notFound()
+   }
+
+   return response
+} 
