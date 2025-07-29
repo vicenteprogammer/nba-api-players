@@ -130,3 +130,79 @@ export const nbaPlayers: PlayerModel[] = [
   }
 } 
 ```
+#### Implementação do Create player 
+- Route
+```ts
+playRoutes.post('/players', controllers.playerCreate)
+```
+- Controller
+```ts
+export const playerCreate= async (req: Request, res: Response ) =>{
+    const player = req.body;
+    if(player){
+        let httpResponse = await createPlayer(player)
+        res.status(httpResponse.statusCode).json(httpResponse.body)
+    }else{
+      const response =   await badRequest()
+      res.status(response.statusCode).json(response.body)
+    }
+    
+    
+} 
+```
+- Service
+```ts
+export const createPlayer= async (player:PlayerModel)=>{
+   let response = null
+   
+   if(Object.keys(player).length !== 0){
+      await PlayerRepository.insertPlayer(player)
+      response = await created()
+   }else{
+      response = await badRequest()
+   }
+
+   return response
+}
+```
+- Repository
+```ts
+export const insertPlayer = async(player: PlayerModel)=>{
+    nbaPlayers.push(player)
+}
+```
+
+#### Implementação do Delete player
+
+- Service
+```ts
+export const deletePlayerService = async (id:number)=>{
+   let response = null
+   const data = await PlayerRepository.deletePlayer(id)
+   if(data != -1){
+      response = await ok({message:'Deleted'})
+   }else{
+      response = await notFound()
+   }
+
+   return response
+} 
+```
+
+#### Implementação do Update player
+- Service
+```ts
+export const updatePlayerService = async (id: number, attributes:AtributesModel) =>{
+   let response = null
+   const data = await PlayerRepository.updatePlayer(id, attributes)
+
+   if(data != -1){
+      response = await ok({message:'Update sucessful'})
+   }
+   else{
+      response = notFound()
+   }
+
+   return response
+}
+```
