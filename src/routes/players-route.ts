@@ -8,5 +8,6 @@ playRoutes.get('/players/list', controllers.getPlayer)
 playRoutes.post('/players', controllers.playerCreate)
 playRoutes.get('/players/:id', controllers.getPlayerById)
 playRoutes.delete('/players/:id', controllers.playerDelete)
+playRoutes.patch('/players/:id', controllers.playerUpdate)
 
 export default playRoutes;

@@ -1,5 +1,6 @@
 import { PlayerModel } from "../models/players-model";
 import { nbaPlayers } from "../database/nba-players-data";
+import { AtributesModel } from "../models/attributes-model";
 
 export const findAllPlayers = async ():Promise<PlayerModel[]> =>{
     return nbaPlayers;
@@ -21,5 +22,15 @@ export const deletePlayer = async(id: number) =>{
         nbaPlayers.splice(index, 1)
     }
     
+    return index
+}
+
+export const updatePlayer = async (id:number, attributes: AtributesModel)=>{
+    const index = nbaPlayers.findIndex((p)=> p.id === id);
+
+    if(index != -1){
+        nbaPlayers[index].attributes = attributes
+    }
+
     return index
 }

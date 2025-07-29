@@ -1,3 +1,4 @@
+import { AtributesModel } from "../models/attributes-model";
 import { PlayerModel } from "../models/players-model";
 import * as PlayerRepository from "../repositories/players-repository";
 import { badRequest, created, noContent, notFound, ok } from "../utils/http-help";
@@ -54,3 +55,18 @@ export const deletePlayerService = async (id:number)=>{
 
    return response
 } 
+
+
+export const updatePlayerService = async (id: number, attributes:AtributesModel) =>{
+   let response = null
+   const data = await PlayerRepository.updatePlayer(id, attributes)
+
+   if(data != -1){
+      response = await ok({message:'Update sucessful'})
+   }
+   else{
+      response = notFound()
+   }
+
+   return response
+}
